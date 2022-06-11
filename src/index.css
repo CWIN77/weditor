@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1d2127;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: initial;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  font-size: 14px;
+  color: #C8D4E6;
+  font-weight: 400;
+}
+
+body::-webkit-scrollbar{
+  width:8px;
+  background-color: initial;
+}
+body::-webkit-scrollbar-thumb{
+  width:8px;
+  background-color: #373d4a;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
