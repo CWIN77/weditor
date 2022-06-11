@@ -12,7 +12,7 @@ import { ReactComponent as Svg_more } from '../svgs/more.svg';
 import { ReactComponent as Svg_thumbnail } from '../svgs/thumbnail.svg';
 import { ReactComponent as Svg_thumbnail_bold } from '../svgs/thumbnail_bold.svg';
 
-// import {loginGoogle,getCurrentUser} from '../firebase/auth'
+import {loginGoogle,getCurrentUser} from '../firebase/auth'
 import { IUserData } from '../types';
 
 function Navbar() {
@@ -23,7 +23,7 @@ function Navbar() {
 
   useEffect(()=>{
     window.addEventListener('scroll',()=>{setIsOver(window.scrollY > 89.75)})
-    // getCurrentUser(setUser)
+    getCurrentUser(setUser)
   },[])
 
   return (
@@ -34,9 +34,7 @@ function Navbar() {
           {
             user
             ? <Profile src={String(user?.img)}/>
-            : <Svg_profile onClick={()=>{
-              // loginGoogle()
-            }} width={28} height={28} style={{margin:2,padding:4}}/>
+            : <Svg_profile onClick={()=>{loginGoogle()}} width={28} height={28} style={{margin:2,padding:4}}/>
           }
           <Svg_more width={20} height={20} fill="#C8D4E6" style={{padding:6,display:'flex'}} />
         </div>
