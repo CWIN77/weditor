@@ -6,8 +6,6 @@ import { useEffect,useState } from 'react'
 import {IListRequest,IGraphqlList} from '../types'
 import {API, graphqlOperation} from "aws-amplify"
 import {listRequests} from '../graphql/queries'
-import { logOut } from '../firebase/auth'
-
 
 function Home() {
   const [data,setData] = useState<IListRequest[] | null | "loading">("loading")
@@ -33,7 +31,6 @@ function Home() {
   return (
     <Container>
       <Navbar/>
-      <button onClick={()=>{logOut()}}>로그아웃</button>
       {
         data !== "loading"
         ? data !== null

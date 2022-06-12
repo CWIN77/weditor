@@ -12,14 +12,14 @@ import { ReactComponent as Svg_more } from '../svgs/more.svg';
 import { ReactComponent as Svg_thumbnail } from '../svgs/thumbnail.svg';
 import { ReactComponent as Svg_thumbnail_bold } from '../svgs/thumbnail_bold.svg';
 
-import {loginGoogle,getCurrentUser} from '../firebase/auth'
+import {loginGoogle,getCurrentUser, logOut} from '../firebase/auth'
 import { IUserData } from '../types';
 
 function Navbar() {
   const [page,setPage] = useState(window.location.pathname)
   const [isOver,setIsOver] = useState(false)
   const [user,setUser] = useState<IUserData|null>(null)
-  const iconStyle = {width:16,height:16,fill:"#C8D4E6",style:{marginRight:6}}
+  const iconStyle = {width:16,height:16,fill:"#e4e7ea",style:{marginRight:6}}
 
   useEffect(()=>{
     window.addEventListener('scroll',()=>{setIsOver(window.scrollY > 89.75)})
@@ -31,12 +31,13 @@ function Navbar() {
       <Top>
         <Title>Weditor</Title>
         <div style={{display:'flex',alignItems:'center'}}>
+        <div onClick={()=>{window.location.reload()}} style={{padding:8}}>Refresh</div>
           {
             user
-            ? <Profile src={String(user?.img)}/>
-            : <Svg_profile onClick={()=>{loginGoogle()}} width={28} height={28} style={{margin:2,padding:4}}/>
+            ? <Profile onClick={()=>{logOut()}} src={String(user?.img)}/>
+            : <Svg_profile onClick={()=>{loginGoogle()}} width={30} height={30} style={{margin:2,padding:4}}/>
           }
-          <Svg_more width={20} height={20} fill="#C8D4E6" style={{padding:6,display:'flex'}} />
+          <Svg_more width={20} height={20} fill="#e4e7ea" style={{padding:6,display:'flex'}} />
         </div>
       </Top>
       <Nav>
@@ -126,11 +127,11 @@ const Title = styled.h1`
   padding: 4px;
 `
 const Profile = styled.img`
-  width:32px;
-  height:32px;
-  margin:2px;
+  width:30px;
+  height:30px;
+  margin:6px;
   border-radius: 100px;
-  background-color:#C8D4E6;
+  background-color:#e4e7ea;
 `
 const Nav = styled.div`
   padding: 1rem;
@@ -142,7 +143,7 @@ const Nav = styled.div`
   align-items: center;
 `
 const NavOver = styled.div`
-  background-color:#1d2127;
+  background-color:#1A1A1A;
   padding: 1rem;
   padding-bottom: clac(1rem + 3px);
   /* margin-bottom: 1rem; */
@@ -165,7 +166,6 @@ const NavBtn = styled(Link)<{page:string}>`
   opacity:${(props)=>props.page === "true" ? "1" : "0.7"};
   h2{
     font-size: 15px;
-    font-weight: 400;
     white-space: nowrap;
     overflow: hidden;
   }

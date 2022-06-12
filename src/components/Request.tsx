@@ -10,7 +10,7 @@ import { ReactComponent as Svg_menu } from '../svgs/menu.svg';
 import {IListRequest} from '../types'
 
 function Request({request}:{request:IListRequest}) {
-  const iconStyle = {fill:"#C8D4E6",width:18,height:18}
+  const iconStyle = {fill:"#e4e7ea",width:18,height:18}
   return (
     <Container>
       <Guide>
@@ -40,7 +40,7 @@ function Request({request}:{request:IListRequest}) {
         </div>
         <div style={{justifyContent:'center'}}>
           <PlayBtn href='https://youtu.be/3Wex4qJJN-s' target='_blank'>
-            <Svg_play width={22} height={22} stroke="#C8D4E6" />
+            <Svg_play width={22} height={22} stroke="#e4e7ea" />
           </PlayBtn>
         </div>
         <div style={{justifyContent: "space-between"}}>
@@ -71,10 +71,10 @@ function Request({request}:{request:IListRequest}) {
         </Link>
         <div style={{display:'flex',alignItems:'center',marginTop:8,marginBottom:2,justifyContent:"space-between",width:'100%'}}>
           <div style={{display:'flex',alignItems:'center',margin:2,marginTop:6}}>
-            <Svg_money width={20} height={20} fill="#C8D4E6" />
+            <Svg_money width={22} height={22} fill="#e4e7ea" />
             <Payment><>{request.pay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원~</></Payment>
           </div>
-          <Svg_menu width={20} height={20} fill="#C8D4E6" style={{padding:4}} / >
+          <Svg_menu width={22} height={22} fill="#e4e7ea" style={{padding:2}} / >
         </div>
       </div>
     </Container>
@@ -105,7 +105,7 @@ const Container = styled.div`
 const Guide = styled.div`
   width:calc(((100vw - 16px) / 1) - 2.4rem - 1rem);
   height:calc((((100vw - 16px) / 1) - 2.4rem - 1rem) / 16 * 9 );
-  background-color: #272b35;
+  background-color: #242931;
   border-radius: 8px;
   display:flex;
   flex-direction: column;
@@ -164,7 +164,7 @@ const Tag = styled.div`
   border-radius: 8px;
 `
 const Payment = styled.div`
-  font-size: 18px;
+  font-size: 19px;
   margin-left: 5px;
 `
 const PlayBtn = styled.a`
@@ -176,7 +176,7 @@ const PlayBtn = styled.a`
   h1{
     font-size: 16px;
     margin-left: 8px;
-    color:#C8D4E6;
+    color:#e4e7ea;
   }
 `
 
