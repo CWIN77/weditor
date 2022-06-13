@@ -21,6 +21,33 @@ function Navbar() {
   const [user,setUser] = useState<IUserData|null>(null)
   const iconStyle = {width:16,height:16,fill:"#e4e7ea",style:{marginRight:6}}
 
+  const navData = [
+    {
+      page:"/",
+      text:"편집각",
+      light:(<Svg_video {...iconStyle} />),
+      bold:(<Svg_video_bold {...iconStyle} />)
+    },
+    {
+      page:"/keep",
+      text:"찜목록",
+      light:(<Svg_box {...iconStyle} />),
+      bold:(<Svg_box_bold {...iconStyle} />)
+    },
+    {
+      page:"/result",
+      text:"내성과",
+      light:(<Svg_medal {...iconStyle} />),
+      bold:(<Svg_medal_bold {...iconStyle} />)
+    },
+    {
+      page:"/thumbnail",
+      text:"썸네일",
+      light:(<Svg_thumbnail {...iconStyle} />),
+      bold:(<Svg_thumbnail_bold {...iconStyle} />)
+    }
+  ]
+
   useEffect(()=>{
     window.addEventListener('scroll',()=>{setIsOver(window.scrollY > 89.75)})
     getCurrentUser(setUser)
@@ -40,77 +67,22 @@ function Navbar() {
           <Svg_more width={20} height={20} fill="#e4e7ea" style={{padding:6,display:'flex'}} />
         </div>
       </Top>
-      <Nav>
-        <NavBtn onClick={()=>{setPage("/")}} to={"/"} page={`${page==="/"}`}>
-          {
-            page === '/'
-            ? <Svg_video_bold {...iconStyle} />
-            : <Svg_video {...iconStyle} />
-          }
-          <h2>편집각</h2>
-        </NavBtn>
-        <NavBtn onClick={()=>{setPage("/keep")}} to={"/keep"} page={`${page==="/keep"}`}>
-          {
-            page === '/keep'
-            ? <Svg_box_bold {...iconStyle} />
-            : <Svg_box {...iconStyle} />
-          }
-          <h2>찜목록</h2>
-        </NavBtn>
-        <NavBtn onClick={()=>{setPage("/result")}} to={"/result"} page={`${page==="/result"}`}>
-          {
-            page === '/result'
-            ? <Svg_medal_bold {...iconStyle} />
-            : <Svg_medal {...iconStyle} />
-          }
-          <h2>내성과</h2>
-        </NavBtn>
-        <NavBtn onClick={()=>{setPage("/thumbnail")}} to={"/thumbnail"} page={`${page==="/thumbnail"}`}>
-          {
-            page === '/thumbnail'
-            ? <Svg_thumbnail_bold {...iconStyle} />
-            : <Svg_thumbnail {...iconStyle} />
-          }
-          <h2>썸네일</h2>
-        </NavBtn>
+      <Nav isOver={`${isOver}`}>
+        {
+          navData.map((data)=>{
+            return (
+              <NavBtn onClick={()=>{setPage(data.page)}} to={data.page} page={`${page===data.page}`}>
+                {
+                  page === data.page
+                  ? data.bold
+                  : data.light
+                }
+                <h2>{data.text}</h2>
+              </NavBtn>
+            )
+          })
+        }
       </Nav>
-      {
-        isOver &&
-        <NavOver>
-          <NavBtn onClick={()=>{setPage("/")}} to={"/"} page={`${page==="/"}`}>
-            {
-              page === '/'
-              ? <Svg_video_bold {...iconStyle} />
-              : <Svg_video {...iconStyle} />
-            }
-            <h2>편집각</h2>
-          </NavBtn>
-          <NavBtn onClick={()=>{setPage("/keep")}} to={"/keep"} page={`${page==="/keep"}`}>
-            {
-              page === '/keep'
-              ? <Svg_box_bold {...iconStyle} />
-              : <Svg_box {...iconStyle} />
-            }
-            <h2>찜목록</h2>
-          </NavBtn>
-          <NavBtn onClick={()=>{setPage("/result")}} to={"/result"} page={`${page==="/result"}`}>
-            {
-              page === '/result'
-              ? <Svg_medal_bold {...iconStyle} />
-              : <Svg_medal {...iconStyle} />
-            }
-            <h2>내성과</h2>
-          </NavBtn>
-          <NavBtn onClick={()=>{setPage("/thumbnail")}} to={"/thumbnail"} page={`${page==="/thumbnail"}`}>
-            {
-              page === '/thumbnail'
-              ? <Svg_thumbnail_bold {...iconStyle} />
-              : <Svg_thumbnail {...iconStyle} />
-            }
-            <h2>썸네일</h2>
-          </NavBtn>
-        </NavOver>
-      }
     </>
   )
 }
@@ -133,25 +105,16 @@ const Profile = styled.img`
   border-radius: 100px;
   background-color:#e4e7ea;
 `
-const Nav = styled.div`
+const Nav = styled.div<{isOver:string}>`
+  background-color:#1A1A1A; 
   padding: 1rem;
   padding-bottom: 3px;
+  display:flex;
+  overflow-x: auto;
+  width:calc(100% - 2rem);
+  align-items: center;
   margin-bottom: 1rem;
-  display:flex;
-  overflow-x: auto;
-  width:calc(100% - 2rem);
-  align-items: center;
-`
-const NavOver = styled.div`
-  background-color:#1A1A1A;
-  padding: 1rem;
-  padding-bottom: clac(1rem + 3px);
-  /* margin-bottom: 1rem; */
-  display:flex;
-  overflow-x: auto;
-  width:calc(100% - 2rem);
-  align-items: center;
-  position: fixed;
+  position: ${(props)=>props.isOver === "true" ? "fixed" : "static"};
   top:0px;
 `
 const NavBtn = styled(Link)<{page:string}>`
