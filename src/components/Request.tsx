@@ -15,11 +15,10 @@ function Request({request}:{request:IListRequest}) {
     <Container>
       <Guide>
         <div>
-          <div>
-            <UserImg src='https://lh3.googleusercontent.com/a-/AOh14GhBIpwktw4iDwX7_dafbrn64O2wNRJbx1hivycj5A=s96-c'/>
-            <h1 style={{fontSize:16}}>{request.title}</h1>
-          </div>
-          <h3 style={{fontSize:12,color:"rgba(235,238,241,0.7)"}}>3시간전</h3>
+          <UserImg src='https://lh3.googleusercontent.com/a-/AOh14GhBIpwktw4iDwX7_dafbrn64O2wNRJbx1hivycj5A=s96-c'/>
+          <h3 style={{fontSize:13,color:"rgba(235,238,241,0.7)"}}>CWIN77</h3>
+          <span style={{width:3,height:3,backgroundColor:'rgba(218, 228, 242, 0.7)',margin:"0px 8px",borderRadius:"10px"}} />
+          <h3 style={{fontSize:13,color:"rgba(235,238,241,0.7)"}}>3시간전</h3>
         </div>
         <div style={{justifyContent:'center'}}>
           <PlayBtn href='https://youtu.be/3Wex4qJJN-s' target='_blank'>
@@ -60,15 +59,16 @@ function Request({request}:{request:IListRequest}) {
         </div>
       </Guide>
       <div style={{margin:4,marginTop:8}}>
+        <h1 style={{fontSize:18}}>{request.title}</h1>
         <ExplaneWrapper to={`/request/${request.id}`} onClick={()=>{sessionStorage.setItem(`request/${request.id}`,JSON.stringify(request))}}>
           {
-            request.explane.split('^').map((text,key)=>
+            request.explane.split('^').map((text,key) =>
               key < 2 && <Explane key={key}>{text}</Explane>
             )
           }
         </ExplaneWrapper>
-        <div style={{display:'flex',alignItems:'center',marginTop:16,marginBottom:2,justifyContent:"space-between"}}>
-          <div style={{display:'flex',alignItems:'center',marginTop:6}}>
+        <div style={{display:'flex',alignItems:'center',marginTop:20,marginBottom:2,justifyContent:"space-between"}}>
+          <div style={{display:'flex',alignItems:'center'}}>
             <Svg_money width={24} height={24} fill="#e0e0e0" />
             <Payment><>{request.pay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원~</></Payment>
           </div>
@@ -102,17 +102,17 @@ const Container = styled.div`
 `
 const Guide = styled.div`
   width:calc(((100vw - 16px) / 1) - 2rem - 1rem);
-  height:calc((((100vw - 16px) / 1) - 1.6rem - 1rem) / 16 * 9 );
+  height:calc((((100vw - 16px) / 1) - 1.8rem - 1rem) / 16 * 9 );
   background-color: #212121;
+  box-shadow: 0px 0px 0px 0.75px rgba(235,238,241,0.15);
   border-radius: 8px;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  padding:0.8rem 1rem;
+  padding:0.9rem 1rem;
   margin-bottom: 2px;
   div{
     display:flex;
-    justify-content: space-between;
     align-items: center;
     h2{
         font-size: 12px;
@@ -122,41 +122,45 @@ const Guide = styled.div`
   }
   @media only screen and (min-width:780px) {
     width: calc(((100vw - 16px) / 2) - 2rem - 1rem);
-    height:calc((((100vw - 16px) / 2) - 1.6rem - 1rem) / 16 * 9 );
+    height:calc((((100vw - 16px) / 2) - 1.8rem - 1rem) / 16 * 9 );
   }
   @media only screen and (min-width:1200px) {
     width: calc(((100vw - 16px) / 3) - 2rem - 1rem);
-    height:calc((((100vw - 16px) / 3) - 1.6rem - 1rem) / 16 * 9 );
+    height:calc((((100vw - 16px) / 3) - 1.8rem - 1rem) / 16 * 9 );
   }
   @media only screen and (min-width:1650px) {
     width: calc(((100vw - 16px) / 4) - 2rem - 1rem);
-    height:calc((((100vw - 16px) / 4) - 1.6rem - 1rem) / 16 * 9 );
+    height:calc((((100vw - 16px) / 4) - 1.8rem - 1rem) / 16 * 9 );
   }
 `
 const UserImg = styled.img`
-  width:20px;
-  height:20px;
+  width:18px;
+  height:18px;
   border-radius: 100px;
   margin-right: 7px;
 `
 const ExplaneWrapper = styled(Link)`
   display:flex;
   flex-direction: column;
-  max-height : 81.56px;
+  max-height : 41px;
   overflow: hidden;
+  margin-top: 3px;
 `
 const Explane = styled.h2`
   font-size: 14px;
   color: rgba(218, 228, 242, 0.7);
+  line-height: 20.5px;
+  letter-spacing: 0.75px;
 `
 const Payment = styled.div`
-  font-size: 16px;
-  margin-left: 5px;
+  font-size: 18px;
+  margin-left: 7px;
   font-weight: bold;
 `
 const PlayBtn = styled.a`
   display:flex;
   align-items: center;
+  justify-content: center;
   border-radius: 8px;
   padding: 8px;
   margin: 2px;
