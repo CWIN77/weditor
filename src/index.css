@@ -4,7 +4,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1A1A1A;
+  background-color: #181818;
 }
 
 code {
@@ -21,7 +21,7 @@ code {
   outline: none;
   text-decoration: none;
   font-size: 14px;
-  color: #e4e7ea;
+  color: #e0e0e0;
 }
 
 body::-webkit-scrollbar{

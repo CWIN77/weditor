@@ -19,7 +19,7 @@ function Navbar() {
   const [page,setPage] = useState(window.location.pathname)
   const [isOver,setIsOver] = useState(false)
   const [user,setUser] = useState<IUserData|null>(null)
-  const iconStyle = {width:16,height:16,fill:"#e4e7ea",style:{marginRight:6}}
+  const iconStyle = {width:16,height:16,fill:"#e0e0e0",style:{marginRight:6}}
 
   const navData = [
     {
@@ -64,7 +64,7 @@ function Navbar() {
             ? <Profile onClick={()=>{logOut()}} src={String(user?.img)}/>
             : <Svg_profile onClick={()=>{loginGoogle()}} width={30} height={30} style={{margin:2,padding:4}}/>
           }
-          <Svg_more width={20} height={20} fill="#e4e7ea" style={{padding:6,display:'flex'}} />
+          <Svg_more width={20} height={20} fill="#e0e0e0" style={{padding:6,display:'flex'}} />
         </div>
       </Top>
       <Nav isOver={`${isOver}`}>
@@ -103,10 +103,10 @@ const Profile = styled.img`
   height:30px;
   margin:6px;
   border-radius: 100px;
-  background-color:#e4e7ea;
+  background-color:#e0e0e0;
 `
 const Nav = styled.div<{isOver:string}>`
-  background-color:#1A1A1A; 
+  background-color:#181818; 
   padding: 1rem;
   padding-bottom: 3px;
   display:flex;

@@ -15,8 +15,8 @@ import {IListRequest} from '../types'
 import { useParams } from 'react-router';
 
 function Detail() {
-  const topIconStyle = {fill:"#e4e7ea",width:20,height:20,style:{padding:"0.5rem",cursor:'pointer'}}
-  const mainIconStyle = {fill:"#e4e7ea",width:18,height:18}
+  const topIconStyle = {fill:"#e0e0e0",width:20,height:20,style:{padding:"0.5rem",cursor:'pointer'}}
+  const mainIconStyle = {fill:"#e0e0e0",width:18,height:18}
   const navIconStyle = {width:20,height:20}
 
   const {id} = useParams();
@@ -27,7 +27,7 @@ function Detail() {
       <TopBar>
         <Svg_arrow onClick={()=>{window.history.back()}} {...topIconStyle} />
         <div style={{display:'flex',alignItems:'center'}}>
-          <Svg_money fill="#e4e7ea" width={20} height={20} />
+          <Svg_money fill="#e0e0e0" width={20} height={20} />
           <h1 style={{fontSize:17,marginLeft:6}}><>최소 {request?.pay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 지급</></h1>
         </div>
         <Svg_menu {...topIconStyle} />
@@ -61,7 +61,7 @@ function Detail() {
             </div>
             <div style={{justifyContent:'center'}}>
               <PlayBtn href='https://youtu.be/3Wex4qJJN-s' target='_blank'>
-                <Svg_play width={22} height={22} stroke="#e4e7ea" />
+                <Svg_play width={22} height={22} stroke="#e0e0e0" />
               </PlayBtn>
             </div>
             <div style={{justifyContent: "space-between"}}>
@@ -94,19 +94,19 @@ function Detail() {
       <Nav>
         <NavIconWrapper>
           <NavIcon href={String(request?.videoUrl)} type="_blank">
-            <Svg_play stroke="#e4e7ea" {...navIconStyle} />
+            <Svg_play stroke="#e0e0e0" {...navIconStyle} />
             <h2>플레이</h2>
           </NavIcon>
           <NavIcon href={String(request?.downloadUrl)}>
-            <Svg_download fill="#e4e7ea" {...navIconStyle} />
+            <Svg_download fill="#e0e0e0" {...navIconStyle} />
             <h2>다운받기</h2>
           </NavIcon>
           <NavIcon>
-            <Svg_box fill="#e4e7ea" {...navIconStyle} />
+            <Svg_box fill="#e0e0e0" {...navIconStyle} />
             <h2>찜하기</h2>
           </NavIcon>
           <NavIcon>
-            <Svg_upload fill="#e4e7ea" {...navIconStyle} />
+            <Svg_upload fill="#e0e0e0" {...navIconStyle} />
             <h2>제작완료</h2>
           </NavIcon>
         </NavIconWrapper>
@@ -124,7 +124,7 @@ const PlayBtn = styled.a`
   h1{
     font-size: 16px;
     margin-left: 8px;
-    color:#e4e7ea;
+    color:#e0e0e0;
   }
 `
 const Nav = styled.div`
@@ -137,7 +137,7 @@ const Nav = styled.div`
 `
 const NavIconWrapper = styled.div`
   display:flex;
-  background-color:#242931;
+  background-color:#212121;
   border-radius:8px;
   padding:6px;
 `
@@ -179,7 +179,7 @@ const Information = styled.div`
   span{
     width:3px;
     height:3px;
-    background-color: #e4e7ea;
+    background-color: #e0e0e0;
     margin: 8px;
   }
   img{
@@ -193,7 +193,7 @@ const Information = styled.div`
 const Guide = styled.div`
   width:calc(100vw - 2rem - 2.4rem);
   height:calc((100vw - 2rem - 2.4rem) / 16 * 9 );
-  background-color: #242931;
+  background-color: #212121;
   border-radius: 8px;
   display:flex;
   flex-direction: column;
